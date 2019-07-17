@@ -117,36 +117,43 @@ class Article {
   constructor(articles) {
     this.articles = articles,
     this.title = title,
-    this.date = date,
-    this.
-
+    this.date = date
   }
 };
 
+const createArticle = () => {
+  const articles = document.querySelectorAll('.articles');
 
-console.log(articles);
+  const newArticle = document.createElement('div');
+  newArticle.classList.add('article');
+  // articles.appendChild(article);  
 
-data.forEach(article => {
+  const articleTitle = document.createElement('h2');
+  articleTitle.classList.add('title');
+  newArticle.appendChild(articleTitle);
+
+  const articleDate = document.createElement('p');
+  articleDate.classList.add('date');
+  newArticle.appendChild(articleDate);
+
+  const firstPara = document.createElement('p');
+  firstPara.classList.add('paragraph');
+  newArticle.appendChild(firstPara);
+
+  const secondPara = document.createElement('p');
+  secondPara.classList.add('paragraph');
+  newArticle.appendChild(secondPara);
+
+  const thirdPara = document.createElement('p');
+  thirdPara.classList.add('paragraph');
+  newArticle.appendChild(thirdPara);
+
+  articles.appendChild(newArticle);
+  return newArticle;
+};
+
+data.map((article) => {
   const newArticle = new Article(
     createArticle()
   );
 });
-
-function createArticle() {
-  const articles = document.querySelectorAll('.articles');
-
-  const article = document.createElement('div');
-  articles.appendChild(article);  
-  article.classList.add('article');
-
-  const articleTitle = document.createElement('h2');
-  articles.appendChild(articleTitle);
-  articleTitle.classList.add('title');
-
-  const articleDate = document.createElement('p');
-  articles.appendChild(articleDate);
-  articleDate.classList.add('date');
-
-  const firstParagraph = document.createElement('p');
-  articles.
-};
