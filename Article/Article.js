@@ -114,46 +114,63 @@ const data = [
 */
 
 class Article {
-  constructor(articles) {
-    this.articles = articles,
-    this.title = title,
-    this.date = date
+  constructor(articles, title, date, paragraphOne, paragraphTwo, paragraphThree) {
+    this.title = articles.querySelector('.title');
+    this.title.textContent = title;
+    this.date = articles.querySelector('.date');
+    this.date.textContent = date;
+    this.paragraphOne = articles.querySelector('.paragraph1');
+    this.paragraphOne.textContent = paragraphOne;
+    this.paragraphTwo = articles.querySelector('.paragraph2');
+    this.paragraphTwo.textContent = paragraphTwo;
+    this.paragraphThree = articles.querySelector('.paragraph3');
+    this.paragraphThree.textContent = paragraphThree;
+    console.log(this.title);
+    console.log(this.date);
   }
 };
 
 const createArticle = () => {
-  const articles = document.querySelectorAll('.articles');
-
+  const articles = document.querySelector('.articles');
   const newArticle = document.createElement('div');
   newArticle.classList.add('article');
-  // articles.appendChild(article);  
 
   const articleTitle = document.createElement('h2');
-  articleTitle.classList.add('title');
-  newArticle.appendChild(articleTitle);
+    articleTitle.classList.add('title');
+    newArticle.appendChild(articleTitle);
+    articleTitle.textContent = data[0].title;
+    console.log(articleTitle);
 
   const articleDate = document.createElement('p');
-  articleDate.classList.add('date');
-  newArticle.appendChild(articleDate);
+    articleDate.classList.add('date');
+    newArticle.appendChild(articleDate);
+    // articleDate.textContent = data.date;
 
   const firstPara = document.createElement('p');
-  firstPara.classList.add('paragraph');
-  newArticle.appendChild(firstPara);
+    firstPara.classList.add('paragraph1');
+    newArticle.appendChild(firstPara);
+    // firstPara.textContent = data.firstParagraph;
 
   const secondPara = document.createElement('p');
-  secondPara.classList.add('paragraph');
-  newArticle.appendChild(secondPara);
+    secondPara.classList.add('paragraph2');
+    newArticle.appendChild(secondPara);
 
   const thirdPara = document.createElement('p');
-  thirdPara.classList.add('paragraph');
-  newArticle.appendChild(thirdPara);
+    thirdPara.classList.add('paragraph3');
+    newArticle.appendChild(thirdPara);
 
   articles.appendChild(newArticle);
   return newArticle;
 };
 
 data.map((article) => {
-  const newArticle = new Article(
-    createArticle()
+  const newArticleObj = new Article(
+    createArticle(),
+    article.title,
+    article.date,
+    article.firstParagraph,
+    article.secondParagraph,
+    article.thirdParagraph
   );
-});
+  console.log(newArticleObj);
+})
